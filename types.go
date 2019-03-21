@@ -1,4 +1,4 @@
-package k8sTypes
+package kubetype
 
 import (
 	"encoding/json"
