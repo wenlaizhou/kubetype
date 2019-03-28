@@ -8,6 +8,12 @@ type PodNetwork struct {
 	Protocol string
 }
 
+type ContainerResource struct {
+	Name    string
+	Limit   map[string]string
+	Request map[string]string
+}
+
 // 获取pod网络信息
 func GetPodNetwork(pod Pod) []PodNetwork {
 	var res []PodNetwork
@@ -23,6 +29,28 @@ func GetPodNetwork(pod Pod) []PodNetwork {
 				res = append(res, network)
 			}
 		}
+	}
+	return res
+}
+
+// 获取pod资源信息
+func GetPodLimits(pod Pod) []ContainerResource {
+	var res []ContainerResource
+	for _, container := range pod.Spec.Containers {
+		resource := ContainerResource{
+			Name:    container.Name,
+			Limit:   map[string]string{},
+			Request: map[string]string{},
+		}
+
+		for k, v := range container.Resources.Limits {
+			resource.Limit[fmt.Sprintf("%v", k)] = v
+		}
+
+		for k, v := range container.Resources.Requests {
+			resource.Request[fmt.Sprintf("%v", k)] = v
+		}
+		res = append(res, resource)
 	}
 	return res
 }
