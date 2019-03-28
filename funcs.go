@@ -34,7 +34,7 @@ func GetPodNetwork(pod Pod) []PodNetwork {
 }
 
 // 获取pod资源信息
-func GetPodLimits(pod Pod) []ContainerResource {
+func GetPodResource(pod Pod) []ContainerResource {
 	var res []ContainerResource
 	for _, container := range pod.Spec.Containers {
 		resource := ContainerResource{
