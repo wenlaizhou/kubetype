@@ -1,6 +1,8 @@
 package kubetype
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type PodNetwork struct {
 	PodIP    string
@@ -12,6 +14,14 @@ type ContainerResource struct {
 	Name    string
 	Limit   map[string]string
 	Request map[string]string
+}
+
+type NodeNetwork struct {
+	Hostname    string
+	ExternalIP  string
+	InternalIP  string
+	ExternalDNS string
+	InternalDNS string
 }
 
 // 获取pod网络信息
@@ -51,6 +61,37 @@ func GetPodResource(pod Pod) []ContainerResource {
 			resource.Request[fmt.Sprintf("%v", k)] = v
 		}
 		res = append(res, resource)
+	}
+	return res
+}
+
+// 获取node网络信息
+func GetNodeNetwork(node Node) NodeNetwork {
+	res := NodeNetwork{}
+	for _, addr := range node.Status.Addresses {
+		switch addr.Type {
+
+		case NodeHostName:
+			res.Hostname = addr.Address
+			break
+
+		case NodeInternalIP:
+			res.InternalIP = addr.Address
+			break
+
+		case NodeExternalIP:
+			res.ExternalIP = addr.Address
+			break
+
+		case NodeInternalDNS:
+			res.InternalDNS = addr.Address
+			break
+
+		case NodeExternalDNS:
+			res.ExternalDNS = addr.Address
+			break
+
+		}
 	}
 	return res
 }
