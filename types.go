@@ -2020,7 +2020,7 @@ const (
 )
 
 type RollingUpdateDeployment struct {
-	MaxUnavailable string      `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
+	MaxUnavailable interface{} `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
 	MaxSurge       interface{} `json:"maxSurge,omitempty" protobuf:"bytes,2,opt,name=maxSurge"`
 }
 
@@ -2071,7 +2071,7 @@ const (
 )
 
 type RollingUpdateDaemonSet struct {
-	MaxUnavailable string `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
+	MaxUnavailable interface{} `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
 }
 
 type DaemonSetSpec struct {
