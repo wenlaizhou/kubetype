@@ -2020,8 +2020,8 @@ const (
 )
 
 type RollingUpdateDeployment struct {
-	MaxUnavailable string `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
-	MaxSurge       string `json:"maxSurge,omitempty" protobuf:"bytes,2,opt,name=maxSurge"`
+	MaxUnavailable string      `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
+	MaxSurge       interface{} `json:"maxSurge,omitempty" protobuf:"bytes,2,opt,name=maxSurge"`
 }
 
 type DeploymentStatus struct {
