@@ -2020,8 +2020,8 @@ const (
 )
 
 type RollingUpdateDeployment struct {
-	MaxUnavailable json.Number `json:"maxUnavailable,Number,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
-	MaxSurge       json.Number `json:"maxSurge,Number,omitempty" protobuf:"bytes,2,opt,name=maxSurge"`
+	MaxUnavailable string `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
+	MaxSurge       string `json:"maxSurge,omitempty" protobuf:"bytes,2,opt,name=maxSurge"`
 }
 
 type DeploymentStatus struct {
@@ -2071,7 +2071,7 @@ const (
 )
 
 type RollingUpdateDaemonSet struct {
-	MaxUnavailable json.Number `json:"maxUnavailable,Number,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
+	MaxUnavailable string `json:"maxUnavailable,omitempty" protobuf:"bytes,1,opt,name=maxUnavailable"`
 }
 
 type DaemonSetSpec struct {
