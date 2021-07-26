@@ -668,11 +668,11 @@ type HTTPHeader struct {
 }
 
 type HTTPGetAction struct {
-	Path        string       `json:"path,omitempty" protobuf:"bytes,1,opt,name=path"`
-	Port        string       `json:"port,omitempty" protobuf:"bytes,2,opt,name=port"`
-	Host        string       `json:"host,omitempty" protobuf:"bytes,3,opt,name=host"`
-	Scheme      URIScheme    `json:"scheme,omitempty" protobuf:"bytes,4,opt,name=scheme,casttype=URIScheme"`
-	HTTPHeaders []HTTPHeader `json:"httpHeaders,omitempty" protobuf:"bytes,5,rep,name=httpHeaders"`
+	Path        string          `json:"path,omitempty" protobuf:"bytes,1,opt,name=path"`
+	Port        json.RawMessage `json:"port,omitempty" protobuf:"bytes,2,opt,name=port"`
+	Host        string          `json:"host,omitempty" protobuf:"bytes,3,opt,name=host"`
+	Scheme      URIScheme       `json:"scheme,omitempty" protobuf:"bytes,4,opt,name=scheme,casttype=URIScheme"`
+	HTTPHeaders []HTTPHeader    `json:"httpHeaders,omitempty" protobuf:"bytes,5,rep,name=httpHeaders"`
 }
 
 type URIScheme string
